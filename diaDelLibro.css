@@ -1,0 +1,40 @@
+body {
+  color: black;
+  background-color: rgb(182, 208, 233);
+  font-family: 'Arial';
+}
+
+ol {
+  color: black;
+  width: 600px;
+  background-color: black;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+  word-spacing: 5px;
+  font-family: Georgia, serif;
+}
+nav{
+  color: black;
+  text-align: center;
+}
+img{
+  image-rendering: auto;
+}
+
+p {
+  font-style: normal;
+  text-align: justify;
+  text-size-adjust: auto;
+  background-color: rgb(182, 208, 233)
+}
+
+h3 {
+  font-style: italic;
+  text-transform: uppercase;
+  font-family: Verdana, sans-serif;
+}
+
+ 
