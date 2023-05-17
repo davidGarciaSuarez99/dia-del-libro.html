@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>diaDelLibro</title>
+    <link rel="stylesheet" type="text/CSS" href="diaDelLibro.css" media="screen"/>
+</head>
+
+<body>
+<p>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="¡CSS Válido!" >
+    </a>
+</p>
+<p>
+<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    <img style="border:0;width:88px;height:31px"
+        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+        alt="¡CSS Válido!" >
+    </a>
+</p>
+  <ul id="menu">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Acerca de</a></li>
+    <li><a href="#">Productos</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+<div class="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item">
+        <img src="carlos.png" alt="Carlos">
+      </div>
+      <div class="carousel-item">
+        <img src="palacio.png" alt="libro 1">
+      </div>
+      <div class="carousel-item">
+        <img src="vientos.png" alt="libro 2">
+      </div>
+      <div class="carousel-item">
+        <img src="luces.png" alt="libro 3">
+      </div>
+    </div>
+  </div>
+  <div id="clock"></div>
+  <h1 id="text">lo mejor de Carlos Ruiz Zafon</h1>
+
+  <button onclick="changeText()">cambiar texto</button>
+    <button onclick="showPopup()">Mostrar ventana emergente</button>
+
+  <div id="popupContainer" style="display: none;">
+    <div class="overlay"></div>
+    <div class="popup">
+      <span class="close-button" onclick="closePopup()">X</span>
+      <h2>Mensaje de ventana emergente</h2>
+      <p>¡Este es un mensaje en una ventana emergente!</p>
+    </div>
+  </div>
+ 
+  <script>
+   
+    const menu = document.getElementById('menu');
+
+    
+    const items = menu.getElementsByTagName('li');
+    for (let i = 0; i < items.length; i++) {
+      items[i].addEventListener('click', function() {
+        // Realizar alguna acción al hacer clic en el elemento del menú
+        console.log('Clic en ' + this.textContent);
+      });
+    }
+    const carousel = document.querySelector('.carousel-inner');
+
+    let currentPosition = 0;
+    const slideWidth = carousel.offsetWidth;
+
+    
+    function nextSlide() {
+      currentPosition -= slideWidth;
+      if (currentPosition < -slideWidth * (carousel.children.length - 1)) {
+        currentPosition = 0;
+      }
+      carousel.style.transform = `translateX(${currentPosition}px)`;
+    }
+
+    // Función para cambiar al slide anterior
+    function prevSlide() {
+      currentPosition += slideWidth;
+      if (currentPosition > 0) {
+        currentPosition = -slideWidth * (carousel.children.length - 1);
+      }
+      carousel.style.transform = `translateX(${currentPosition}px)`;
+    }   
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Siguiente';
+    nextButton.addEventListener('click', nextSlide);
+
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'Anterior';
+    prevButton.addEventListener('click', prevSlide);
+
+    document.body.appendChild(prevButton);
+    document.body.appendChild(nextButton);
+
+       // Obtener el elemento del reloj
+    const clock = document.getElementById('clock');
+
+    // Función para obtener la hora actual
+    function getCurrentTime() {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      
+      const formattedTime = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;      
+      clock.textContent = formattedTime;
+    }   
+    function padZero(number) {
+      return number < 10 ? `0${number}` : number;
+    }   
+    setInterval(getCurrentTime, 1000);   
+    getCurrentTime();   
+    const imageContainers = document.querySelectorAll('.image-container');
+    imageContainers.forEach(container => {
+      const overlay = container.querySelector('.image-overlay');
+      const caption = container.querySelector('.image-caption');
+
+      container.addEventListener('mouseenter', () => {
+        overlay.style.opacity = '1';
+        caption.style.display = 'block';
+      });
+
+      container.addEventListener('mouseleave', () => {
+        overlay.style.opacity = '0';
+        caption.style.display = 'none';
+      });
+    });
+ function changeText() {
+      const textElement = document.getElementById('text');
+      textElement.textContent = 'practicando JavaScript';
+    }
+    function showPopup() {
+      const popupContainer = document.getElementById('popupContainer');
+      popupContainer.style.display = 'block';
+    }    
+    function closePopup() {
+      const popupContainer = document.getElementById('popupContainer');
+      popupContainer.style.display = 'none';
+    }
+      function showPopup() {
+      const popupContainer = document.getElementById('popupContainer');
+      popupContainer.style.display = 'block';
+    }    
+    function closePopup() {
+      const popupContainer = document.getElementById('popupContainer');
+      popupContainer.style.display = 'none';
+    }
+    function showPopup() {
+      const popupContainer = document.getElementById('popupContainer');
+      popupContainer.style.display = 'block';
+      popupContainer.querySelector('.popup').style.backgroundColor = 'lightblue'; // Cambia el color de fondo aquí
+    }
+    function closePopup() {
+      const popupContainer = document.getElementById('popupContainer');
+      popupContainer.style.display = 'none';
+    }
+  </script>
+
+
+    
+ <h1>dia del libro </h1>
+    <p>El Día Internacional del Libro es una conmemoración celebrada cada 23 de abril
+       a nivel mundial con el objetivo de fomentar la lectura, la industria editorial y
+       la protección de la propiedad intelectual por medio del derecho de autor. 
+       Desde 1988, es una celebración internacional promovida por la UNESCO.
+
+       Se trata de un día simbólico para la literatura mundial, ya que ese día, en 1616,
+       fallecieron Cervantes, Garcilaso de la Vega y Shakespeare (Cervantes en realidad murió el 22, 
+       pero fue enterrado el 23, y en cuanto a Shakespeare, ese 23 de abril corresponde al calendario juliano, vigente aún en la Inglaterra isabelina
+
+       El Día Internacional del Libro se creó en honor a estos autores fallecidos.</p>
+        
+
+    <h2>RUIZ ZAFÓN, CARLOS</h2>
+     <img src=carlos.png class="alineadoTextoImagencentro" alt=""  width="100" height="100">
+
+      <h3> biografia y libros </h3>
+
+      <p>Escritor y guionista español, Carlos Ruiz Zafón fue uno de los autores contemporáneos más conocidos de España, 
+         siendo su novela La sombra del viento uno de los libros más destacados, con más de 12 millones de ejemplares vendidos en todo el mundo.
+
+         Nacido en Barcelona, estudió en el colegio de los jesuitas de San Ignacio de Sarriá, se matriculó en Ciencias de la Información
+         y empezó en el mundo de la publicidad, llegando a ser director creativo. Sin embargo, en 1992 decidió centrarse en escribir.
+         Tras el éxito de su primera novela El príncipe de la niebla, emigró a Estados Unidos donde escribió guiones mientras continuaba publicando libros.<p>
+
+      <h3>El palacio de la medianoche</h3>
+
+        <img src=palacio.png class="alineadoTextoImagencentro" alt=""  width="100" height="100">
+
+
+      <p>Calcuta, 1932. Un tren en llamas atraviesa la ciudad. Un espectro de fuego 
+         siembra el terror en las sombras de la noche...
+         En la víspera de cumplir los 16 años, Ben, Sheere y sus amigos deberán 
+         enfrentarse al más terrible y mortífero enigma en la historia</p>
+
+
+     <h3>Las luces de septiembre</h3>  
+
+      <img src=luces.png class="alineadoTextoImagencentro" alt=""  width="100" height="100">
+
+     <p>Un misterioso fabricante de juguetes que vive recluido en una gigantesca mansión... Un enigma en torno
+        a extrañas luces que brillan en la niebla. Una criatura de pesadilla que se oculta 
+        en lo más profundo del bosque...</p>
+
+     <h3>La Sombra del Viento</h3> 
+
+       <img src=viento.png class="alineadoTextoImagencentro" alt=""  width="100" height="100">
+
+
+     <p>Un amanecer de 1945 un muchacho es conducido por su padre a un misterioso lugar 
+        oculto en el corazón de la ciudad vieja: El Cementerio de los Libros Olvidados. Allí, Daniel
+        Sempere encuentra un libro maldito que cambiará el rumbo de su vida y le arrastra a un laberinto de intrigas y secretos enterra...</p>
+
+        <script>
+        // JavaScript para el carrusel
+        const carouselSlide = document.querySelector('.carousel-slide');
+        const carouselImages = document.querySelectorAll('.carousel-slide img');
+        
+        let counter = 1;
+        const slideWidth = carouselImages[0].clientWidth;
+        
+        setInterval(() => {
+            carouselSlide.style.transition = 'transform 0.8s ease-in-out';
+            carouselSlide.style.transform = `translateX(${-slideWidth * counter}px)`;
+        
+            counter++;
+        
+            if (counter >= carouselImages.length) {
+                counter = 0;
+                setTimeout(() => {
+                    carouselSlide.style.transition = 'none';
+                    carouselSlide.style.transform = `translateX(0)`;
+                }, 800);
+            }
+        }, 3000);
+    </script>
+    </body>
+
+</html>
